@@ -34,5 +34,5 @@ runs:
         gh pr comment $PR_NUMBER --body "<pre>$GATES</pre>" --edit-last
       env:
         CIRCUITS_DIR: ${{ inputs.path }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
         PR_NUMBER: ${{ github.event.number }}
