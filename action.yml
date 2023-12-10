@@ -1,0 +1,37 @@
+name: 'noir-circuit-info-action'
+description: 'Comment noir circuit info on PRs'
+author: 'sambarnes'
+
+branding:
+  icon: play-circle
+  color: black
+
+inputs:
+  path:
+    description: 'Path (from repo root) to the circuit's directory'
+    default: circuits
+  GITHUB_TOKEN:
+    description: 'Github token of the repository (automatically created by Github)'
+    default: ${{ github.token }}
+    required: false
+
+runs:
+  using: composite
+
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Install nargo
+      uses: noir-lang/noirup@v0.1.2
+      with:
+        toolchain: nightly
+
+    - name: Comment nargo info
+      run: |
+        cd $CIRCUITS_DIR
+        GATES=$(nargo info)
+        gh pr comment $PR_NUMBER --body "<pre>$GATES</pre>" --edit-last
+      env:
+        CIRCUITS_DIR: ${{ inputs.path }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_NUMBER: ${{ github.event.number }}
