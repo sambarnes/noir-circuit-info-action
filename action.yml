@@ -8,7 +8,7 @@ branding:
 
 inputs:
   path:
-    description: 'Path (from repo root) to the circuit's directory'
+    description: "Path (from repo root) to the circuit's directory"
     default: circuits
     required: false
   GITHUB_TOKEN:
