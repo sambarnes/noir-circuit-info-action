@@ -20,14 +20,13 @@ runs:
   using: composite
 
   steps:
-    - uses: actions/checkout@v2
-
     - name: Install nargo
       uses: noir-lang/noirup@v0.1.2
       with:
         toolchain: nightly
 
     - name: Comment nargo info
+      shell: bash
       run: |
         cd $CIRCUITS_DIR
         GATES=$(nargo info)
