@@ -30,7 +30,7 @@ runs:
       run: |
         cd $CIRCUITS_DIR
         GATES=$(nargo info)
-        gh pr comment $PR_NUMBER --body "<pre>$GATES</pre>" --edit-last
+        gh pr comment $PR_NUMBER --body "<pre>$GATES</pre>" --edit-last || gh pr comment $PR_NUMBER --body "<pre>$GATES</pre>"
       env:
         CIRCUITS_DIR: ${{ inputs.path }}
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
