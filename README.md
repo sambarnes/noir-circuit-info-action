@@ -1,3 +1,5 @@
+*edit: nvm just use this https://github.com/TomAFrench/noir-gates-diff*
+
 ## `noir-circuit-info-action`
 
 Primitive action to show [noir](https://github.com/noir-lang/noir) circuit info on your PRs. Currently includes ACIR opcodes and gate count.
