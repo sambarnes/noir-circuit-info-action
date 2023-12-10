@@ -10,6 +10,7 @@ inputs:
   path:
     description: 'Path (from repo root) to the circuit's directory'
     default: circuits
+    required: false
   GITHUB_TOKEN:
     description: 'Github token of the repository (automatically created by Github)'
     default: ${{ github.token }}
